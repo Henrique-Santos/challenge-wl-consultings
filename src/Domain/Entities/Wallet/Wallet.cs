@@ -6,11 +6,11 @@ public class Wallet
     public string UserId { get; private set; } = string.Empty;
     public decimal Balance { get; private set; }
 
-    public Wallet(string userId)
+    public Wallet(string userId, decimal balance = 0.0m)
     {
         Id = Guid.NewGuid();
         UserId = userId;
-        Balance = 0.0m;
+        Balance = balance;
     }
 
     public void AddBalance(decimal amount)

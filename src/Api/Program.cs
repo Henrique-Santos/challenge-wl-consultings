@@ -23,6 +23,7 @@ var app = builder.Build();
         app.UseSwaggerUI();
     }
 
+    app.UseDependencyInjectionConfigurations();
     app.UseHttpsRedirection();
     app.UseAuthentication();
     app.UseAuthorization();
