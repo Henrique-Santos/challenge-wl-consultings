@@ -1,4 +1,4 @@
-using Api.Contracts;
+using Api.Contracts.Authentication;
 using Api.Extensions;
 using Api.Services;
 using Microsoft.AspNetCore.Identity;
@@ -23,7 +23,7 @@ public class AuthenticationController : ApiController
     }
 
     [HttpPost("sign-up")]
-    public async Task<IActionResult> Register(RegisterRequest registerViewModel)
+    public async Task<IActionResult> Register(RegisterRequest request)
     {
         if (!ModelState.IsValid)
         {
@@ -32,12 +32,12 @@ public class AuthenticationController : ApiController
 
         var user = new IdentityUser
         {
-            UserName = registerViewModel.UserName,
-            Email = registerViewModel.Email,
+            UserName = request.UserName,
+            Email = request.Email,
             EmailConfirmed = true
         };
 
-        var result = await _userManager.CreateAsync(user, registerViewModel.Password);
+        var result = await _userManager.CreateAsync(user, request.Password);
 
         if (!result.Succeeded)
         {
@@ -63,14 +63,14 @@ public class AuthenticationController : ApiController
     }
 
     [HttpPost("sign-in")]
-    public async Task<IActionResult> Login(LoginRequest loginViewModel)
+    public async Task<IActionResult> Login(LoginRequest request)
     {
         if (!ModelState.IsValid)
         {
             return ReportError(ModelState);
         }
 
-        var result = await _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, false, true);
+        var result = await _signInManager.PasswordSignInAsync(request.UserName, request.Password, false, true);
 
         if (result.IsLockedOut)
         {

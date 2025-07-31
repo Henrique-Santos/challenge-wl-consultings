@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Api.Contracts;
+namespace Api.Contracts.Authentication;
 
 public class LoginRequest
 {

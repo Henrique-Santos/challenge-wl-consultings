@@ -17,6 +17,15 @@ public class ApiController : ControllerBase
         });
     }
 
+    protected IActionResult ReportError(string message)
+    {
+        return BadRequest(new
+        {
+            success = false,
+            error = message
+        });
+    }
+
     protected IActionResult ReportSuccess(object? data = null)
     {
         return Ok(new

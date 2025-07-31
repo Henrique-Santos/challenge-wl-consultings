@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
     builder.Services.AddJwtConfigurations(builder.Configuration);
 
+    builder.Services.AddDatabaseConfigurations(builder.Configuration);
+
     builder.Services.AddDependencyInjectionConfigurations();
 }
 
