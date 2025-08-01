@@ -11,7 +11,7 @@ Clone o projeto
 Entre no diretorio raiz do projeto
 
 ```bash
-  cd wl-consultings
+  cd challenge-wl-consultings
 ```
 
 Suba as aplicações
@@ -19,3 +19,7 @@ Suba as aplicações
 ```bash
   docker compose -f docker/docker-compose.yml up -d --build
 ```
+
+### Acesso
+
+- Web api -> [acesse a API via swagger](http://localhost:8080/swagger/index.html)
